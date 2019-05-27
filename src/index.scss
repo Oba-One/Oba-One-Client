@@ -40,6 +40,20 @@ $mod_2: 1.5; // desktop
 html {
 	@include fluid-type($min_width, $max_width, $min_font, $max_font);
 }
+
+body {
+	font-family: 'Lora', serif;
+	font-family: 'Cinzel', serif;
+	-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		scroll-behavior: unset;
+}
+
+main {
+	position: relative;
+	display: block;
+	width: 100%;
+}
 h1 {
 	font-size: $mod_1 * $mod_1 * $mod_1 * $mod_1 * 1rem;
 	@include fluid-type(
@@ -70,3 +84,15 @@ h3 {
 
 p {
 }
+
+input {
+    &:-webkit-autofill ~ span,
+    &:-webkit-autofill:hover ~ span,
+    &:-webkit-autofill:focus ~ span,
+    &:-webkit-autofill:active ~ span {
+      transform: translateY(-34px);
+      font-size: 14px;
+      color: black;
+    }
+  }
+
