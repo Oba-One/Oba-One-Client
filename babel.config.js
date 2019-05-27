@@ -21,7 +21,6 @@ module.exports = ({ cache, env }) => {
 			'babel-plugin-styled-components',
 			'@babel/plugin-proposal-class-properties',
 			'@babel/plugin-syntax-dynamic-import',
-			'react-hot-loader/babel',
 			isTest ? 'dynamic-import-node' : null,
 		].filter(Boolean),
 		env: {
