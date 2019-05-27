@@ -1,7 +1,9 @@
 module.exports = {
+  client: {
     service: {
-      endpoint: {
-        url: "http://localhost:3005"
-      }
-    }
-  };
+      name: "Oba-One-01",
+      url: "http://localhost:3000/graphql"
+    },
+    skipSSLValidation: true
+  }
+};
