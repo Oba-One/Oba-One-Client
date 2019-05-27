@@ -24,7 +24,21 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
 						loader: 'babel-loader',
 					},
 					{
-						test: /\.(png|svg|jpe?g|gif)$/,
+						test: /\.svg$/,
+						use: [
+							{
+								loader: 'babel-loader',
+							},
+							{
+								loader: 'react-svg-loader',
+								options: {
+									jsx: true, // true outputs JSX tag
+								},
+							},
+						],
+					},
+					{
+						test: /\.(png|jpe?g|gif)$/,
 						loader: 'file-loader',
 					},
 					{
