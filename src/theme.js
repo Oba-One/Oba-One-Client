@@ -22,7 +22,7 @@ const theme = () => ({
 	},
 	app: {
 		color: {
-			primary: '#000000',
+			primary: '#222f3e',
 			secondary: '#f9f9f9',
 			alternate: '#949897',
 		},
@@ -50,4 +50,12 @@ const theme = () => ({
 			alternate: '#eeeeed',
 		},
 	},
+	accelerate: animation => `
+		will-change: ${animation};
+		transform: translateZ(0);
+		backface-visibility: hidden;
+		perspective: 1000px;
+	`,
 });
+
+export default theme;
