@@ -13,7 +13,7 @@ const theme = () => ({
 	breakpoint: {
 		projector: '1920px',
 		desktop: '1280px',
-		tablet: '720px',
+		tablet: '920px',
 		mobile: '480px',
 	},
 	border: {
