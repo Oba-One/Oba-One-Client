@@ -4,9 +4,9 @@ import styled from 'styled-components';
 
 import { Container, Grid } from '../../components/global';
 
-import Activity from '../../components/containers/home/Activity';
-import ImageGallery from '../../components/containers/home/ImageGallery';
-import YoutubeFeed from '../../components/containers/home/YoutubeFeed';
+import Activity from '../../components/home/Activity';
+import ImageGallery from '../../components/home/ImageGallery';
+import YoutubeFeed from '../../components/home/YoutubeFeed';
 
 
 const HomeGrid = styled(Grid)``;

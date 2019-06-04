@@ -2,9 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import DevicePane from '../../components/containers/water/DevicePane';
-
-import { Container, Grid } from '../../components/global';
+import { Container, Grid, DevicePane } from '../../components/global';
 
 const WaterGrid = styled(Grid)``;
 
@@ -12,7 +10,7 @@ const Water = () => {
 	return (
 		<Container>
 			<WaterGrid>
-				<DevicePane/>
+				<DevicePane />
 			</WaterGrid>
 		</Container>
 	);
