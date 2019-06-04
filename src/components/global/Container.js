@@ -6,7 +6,6 @@ const Section = styled.section`
     margin: 0 auto;
 	min-height: 100vh;
     width: 100%;
-    border: 3px solid red;
     max-width: ${({ theme }) => theme.breakpoint.desktop};
     padding-top: ${({ paddingTop }) => paddingTop};
     padding-bottom: ${({ paddingBottom }) => paddingBottom};
