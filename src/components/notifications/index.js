@@ -1,5 +1,9 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
+import { useObservable } from "rxjs-hooks";
+import { interval } from "rxjs";
+import { map } from "rxjs/operators";
 
 const Article = styled.article`
 	position: absolute;
@@ -17,12 +21,18 @@ const Article = styled.article`
 `;
 
 
-const Notifications = ({}) => {
+const Notifications = ({location }) => {
+	const isLanding = location.pathname === '/landing';
+	const value = useObservable(() => interval(500).pipe(map((val) => val * 3)));
+
+	if (isLanding) {
+		return null;
+	}
 	return (
 		<Article>
-            Stream of Notifications Here
+            Stream of Notifications Here {value}
 		</Article>
 	);
 };
 
-export default Notifications;
+export default withRouter(Notifications);
