@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import 'sanitize.css/sanitize.css'; 
+import 'sanitize.css/sanitize.css';
 import './index.scss';
 
 const rootId = document.getElementById('app');
