@@ -1,40 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import AirLink from '../containers/air/Link';
-import WaterLink from '../containers/water/Link';
-import EarthLink from '../containers/earth/Link';
-import ProfileLink from '../containers/profile/Link';
-import HomeLink from '../containers/home/Link';
+import { withRouter } from 'react-router-dom';
+import Card from '@material-ui/core/Card';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import AirLink from './Air';
+import WaterLink from './Water';
+import EarthLink from './Earth';
+import HomeLink from './Home';
 
-const Nav = styled.nav`
+const NavContainer = styled(Card)`
 	position: fixed;
 	left: 50%;
 	bottom: 0;
 	transform: translate(-50%, -30px);
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	width: 50%;
 	height: 70px;
 	border-radius: ${({ theme }) => theme.border.radiusSm};
-	background: ${({ theme }) => theme.app.color.alternate};
 	will-change: transform;
 	@media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
 		width: 100%;
 		transform: translate(-50%, 0);
+		border-radius: 0;
 	}
 `;
 
-const Compass = ({}) => {
+const Navigation = styled(BottomNavigation)`
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	background: ${({ theme }) => theme.app.color.alternate};
+`;
+
+const Compass = ({ location }) => {
+	const [page, setPage] = useState('home');
+	const handleChange = newPage => {
+		setPage(newPage);
+	};
+
+	const isLanding = location.pathname === '/landing';
+	if (isLanding) {
+		return null;
+	}
+
 	return (
-		<Nav>
-			<HomeLink>Home</HomeLink>
-			<WaterLink>Water</WaterLink>
-			<EarthLink>Earth</EarthLink>
-			<AirLink>Air</AirLink>
-			<ProfileLink>Profile Link Shown if Mobile</ProfileLink>
-		</Nav>
+		<NavContainer>
+			<Navigation value={page} onChange={() => handleChange()}>
+				<BottomNavigationAction label="Home" value="home" icon />
+				<BottomNavigationAction label="Earth" value="earth" icon />
+				<BottomNavigationAction label="Air" value="air" icon />
+				<BottomNavigationAction label="Water" value="water" icon />
+			</Navigation>
+		</NavContainer>
 	);
 };
 
-export default Compass;
+export default withRouter(Compass);
