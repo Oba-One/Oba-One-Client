@@ -19,12 +19,19 @@ module.exports = env => ({
 		new GenerateSW({
 			swDest: '/src/service-worker.js',
 			include: [],
-			exclude: [],
+			exclude: [/\.(?:png|gif|jpg|jpeg|svg)$/],
 			excludeChunks: [],
 			precacheManifestFilename: 'sw-manifest.[manifestHash].js',
 			offlineGoogleAnalytics: true,
 			skipWaiting: true,
 			runtimeCaching: [
+				{
+					urlPattern: /\.(?:png|gif|jpg|jpeg|svg)$/,
+					handler: 'CacheFirst',
+					options: {
+						cacheName: 'images'
+					}
+				},
 				{
 					urlPattern: '/landing/',
 					handler: 'CacheOnly',
