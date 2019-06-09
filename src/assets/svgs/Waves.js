@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Waves = ({ className }) => (
+const WavesIcon = ({ className }) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"
@@ -11,4 +11,4 @@ const Waves = ({ className }) => (
 	</svg>
 );
 
-export default Waves;
+export default WavesIcon;

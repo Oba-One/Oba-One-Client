@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Account = ({ className }) => (
+const AccountIcon = ({ className }) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"
@@ -11,4 +11,4 @@ const Account = ({ className }) => (
 	</svg>
 );
 
-export default Account;
+export default AccountIcon;

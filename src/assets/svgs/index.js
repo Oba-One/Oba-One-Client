@@ -1,35 +1,39 @@
-import Account from './Account';
-import Cannabis from './Cannabis';
-import DeathStar from './DeathStar';
-import Earth from './Earth';
-import Fire from './Fire';
-import Plus from './Fire';
-import Home from './Home';
-import Rocket from './Rocket';
-import Star from './Star';
-import ThreeG from './ThreeG';
-import FourG from './FourG';
-import FiveG from './FiveG';
-import Upload from './Upload';
-import Water from './Water';
-import Waves from './Waves';
-import Wifi from './Wifi';
+import AccountIcon from './Account';
+import CannabisIcon from './Cannabis';
+import DeathStarIcon from './DeathStar';
+import EarthIcon from './Earth';
+import GoogleIcon from './Google';
+import FireIcon from './Fire';
+import GithubIcon from './Github';
+import PlusIcon from './Fire';
+import HomeIcon from './Home';
+import RocketIcon from './Rocket';
+import StarIcon from './Star';
+import ThreeGIcon from './ThreeG';
+import FourGIcon from './FourG';
+import FiveGIcon from './FiveG';
+import UploadIcon from './Upload';
+import WaterIcon from './Water';
+import WavesIcon from './Waves';
+import WifiIcon from './Wifi';
 
 export {
-	Account,
-	Cannabis,
-	DeathStar,
-	Earth,
-	Fire,
-	Plus,
-	Home,
-	Rocket,
-	Star,
-	ThreeG,
-	FourG,
-	FiveG,
-	Upload,
-	Water,
-	Waves,
-	Wifi,
+	AccountIcon,
+	CannabisIcon,
+	DeathStarIcon,
+	EarthIcon,
+	FireIcon,
+	GoogleIcon,
+	GithubIcon,
+	PlusIcon,
+	HomeIcon,
+	RocketIcon,
+	StarIcon,
+	ThreeGIcon,
+	FourGIcon,
+	FiveGIcon,
+	UploadIcon,
+	WaterIcon,
+	WavesIcon,
+	WifiIcon,
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FiveG = ({ className }) => (
+const FiveGIcon = ({ className }) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"
@@ -11,4 +11,4 @@ const FiveG = ({ className }) => (
 	</svg>
 );
 
-export default FiveG;
+export default FiveGIcon;

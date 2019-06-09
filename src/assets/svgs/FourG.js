@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FourG = ({ className }) => (
+const FourGIcon = ({ className }) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"
@@ -11,4 +11,4 @@ const FourG = ({ className }) => (
 	</svg>
 );
 
-export default FourG;
+export default FourGIcon;

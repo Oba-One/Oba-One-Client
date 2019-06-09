@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Earth = ({ className }) => (
+const EarthIcon = ({ className }) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"
@@ -11,4 +11,4 @@ const Earth = ({ className }) => (
 	</svg>
 );
 
-export default Earth;
+export default EarthIcon;

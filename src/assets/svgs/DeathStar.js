@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DeathStar = ({ className }) => (
+const DeathStarIcon = ({ className }) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"
@@ -11,4 +11,4 @@ const DeathStar = ({ className }) => (
 	</svg>
 );
 
-export default DeathStar;
+export default DeathStarIcon;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Plus = ({ className }) => (
+const PlusIcon = ({ className }) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"
@@ -11,4 +11,4 @@ const Plus = ({ className }) => (
 	</svg>
 );
 
-export default Plus;
+export default PlusIcon;

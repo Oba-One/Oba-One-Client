@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Fire = ({ className }) => (
+const FireIcon = ({ className }) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"
@@ -11,4 +11,4 @@ const Fire = ({ className }) => (
 	</svg>
 );
 
-export default Fire;
+export default FireIcon;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Wifi = ({ className }) => (
+const WifiIcon = ({ className }) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"
@@ -11,4 +11,4 @@ const Wifi = ({ className }) => (
 	</svg>
 );
 
-export default Wifi;
+export default WifiIcon;

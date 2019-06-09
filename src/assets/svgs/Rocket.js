@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Rocket = ({ className }) => (
+const RocketIcon = ({ className }) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"
@@ -11,4 +11,4 @@ const Rocket = ({ className }) => (
 	</svg>
 );
 
-export default Rocket;
+export default RocketIcon;
