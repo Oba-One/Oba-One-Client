@@ -2,9 +2,11 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
-import { Avatar } from '../global';
-
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import useResizeObserver from '../../helpers/useResizeObserver';
+
+import Profile from './Profile';
+import Logo from './Logo';
 
 const AnimatedHeader = styled(animated.header)`
 	position: fixed;
@@ -21,17 +23,11 @@ const AnimatedHeader = styled(animated.header)`
 	will-change: opacity transform;
 `;
 
-const Logo = styled.div``;
-
-const Profile = styled.div``;
-
 const Header = ({ location }) => {
 	const isLanding = location.pathname === '/landing';
 	const isTablet = useResizeObserver() <= 920;
 
-	const animationStyle = useSpring({
-		
-	});
+	const animationStyle = useSpring({});
 
 	if (isLanding || isTablet) {
 		return null;
@@ -39,7 +35,7 @@ const Header = ({ location }) => {
 
 	return (
 		<AnimatedHeader style={animationStyle}>
-			<Logo>Logo</Logo>
+			<Logo/>
 			<Profile>Profile</Profile>
 		</AnimatedHeader>
 	);
