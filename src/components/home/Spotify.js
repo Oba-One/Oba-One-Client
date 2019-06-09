@@ -2,16 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-	grid-area: activity;
-	height: 360px;
+	grid-area: spotify;
+	height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid purple;
 `;
 
-const Activity = ({}) => {
-	return <Wrapper>Activity</Wrapper>;
+const Spotify = ({}) => {
+	return <Wrapper>Spotify</Wrapper>;
 };
 
-export default Activity;
+export default Spotify;
