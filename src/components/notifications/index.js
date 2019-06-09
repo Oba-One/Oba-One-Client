@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import { useObservable } from "rxjs-hooks";
-import { interval } from "rxjs";
-import { map } from "rxjs/operators";
+import { useObservable } from 'rxjs-hooks';
+import { interval } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 const Article = styled.article`
 	position: absolute;
@@ -20,19 +20,15 @@ const Article = styled.article`
 	border-radius: ${({ theme }) => theme.border.radiusSm};
 `;
 
-
-const Notifications = ({location }) => {
+const Notifications = ({ location }) => {
+	const [notifications, setNotifications] = useState([]);
 	const isLanding = location.pathname === '/landing';
-	const value = useObservable(() => interval(500).pipe(map((val) => val * 3)));
+	const value = useObservable(() => interval(500).pipe(map(val => val * 3)));
 
-	if (isLanding) {
+	if (isLanding || !notifications.length) {
 		return null;
 	}
-	return (
-		<Article>
-            Stream of Notifications Here {value}
-		</Article>
-	);
+	return <Article>Stream of Notifications Here {value}</Article>;
 };
 
 export default withRouter(Notifications);
