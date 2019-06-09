@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UserContext, { UserProvider as Provider } from './context';
+import { UserProvider as Provider } from './context';
 
 const UserProvider = ({ children }) => {
 	const [user, setUser] = useState({
@@ -14,3 +14,5 @@ const UserProvider = ({ children }) => {
 	});
 	return <Provider value={user}>{children}</Provider>;
 };
+
+export default UserProvider;
