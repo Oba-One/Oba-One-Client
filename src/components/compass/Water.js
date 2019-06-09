@@ -1,12 +1,18 @@
 import React from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import { Waves } from '../../assets/svgs';
+import { WavesIcon } from '../../assets/svgs';
 
-const StyledLink = styled(NavLink)``;
+const StyledLink = styled(Link)``;
 
 const WaterLink = ({}) => {
-	return <StyledLink>Water</StyledLink>;
+	const onClick = () => {};
+
+	return (
+		<StyledLink to="/water" onClick={() => onClick()}>
+			<WavesIcon />
+		</StyledLink>
+	);
 };
 
 export default withRouter(WaterLink);

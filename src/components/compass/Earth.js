@@ -1,12 +1,18 @@
 import React from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import { Earth } from '../../assets/svgs';
+import { EarthIcon } from '../../assets/svgs';
 
-const StyledLink = styled(NavLink)``;
+const StyledLink = styled(Link)``;
 
 const EarthLink = ({}) => {
-	return <StyledLink>Earth</StyledLink>;
+	const onClick = () => {};
+
+	return (
+		<StyledLink to="/earth" onClick={() => onClick()}>
+			<EarthIcon />
+		</StyledLink>
+	);
 };
 
 export default withRouter(EarthLink);

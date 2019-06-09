@@ -9,7 +9,7 @@ import WaterLink from './Water';
 import EarthLink from './Earth';
 import HomeLink from './Home';
 
-const NavContainer = styled(Card)`
+const NavWrapper = styled(Card)`
 	position: fixed;
 	left: 50%;
 	bottom: 0;
@@ -30,10 +30,12 @@ const Navigation = styled(BottomNavigation)`
 	justify-content: center;
 	width: 100%;
 	height: 100%;
-	background: ${({ theme }) => theme.app.color.alternate};
 `;
 
+const Link = styled(BottomNavigationAction)``;
+
 const Compass = ({ location }) => {
+	const [nav, setNav] = useState('global');
 	const [page, setPage] = useState('home');
 	const handleChange = newPage => {
 		setPage(newPage);
@@ -45,14 +47,25 @@ const Compass = ({ location }) => {
 	}
 
 	return (
-		<NavContainer>
-			<Navigation value={page} onChange={() => handleChange()}>
-				<BottomNavigationAction label="Home" value="home" icon />
-				<BottomNavigationAction label="Earth" value="earth" icon />
-				<BottomNavigationAction label="Air" value="air" icon />
-				<BottomNavigationAction label="Water" value="water" icon />
+		<NavWrapper>
+			<Navigation value={page} onChange={handleChange}>
+				{nav === 'device' ? (
+					<>
+						<Link label="Dashboard" value="dashboard" icon={<HomeLink />} />
+						<Link label="Stream" value="stream" icon={<EarthLink />} />
+						<Link label="Remote" value="remote" icon={<WaterLink />} />
+						<Link label="Settings" value="settings" icon={<AirLink />} />
+					</>
+				) : (
+					<>
+						<Link label="Home" value="home" icon={<HomeLink />} />
+						<Link label="Earth" value="earth" icon={<EarthLink />} />
+						<Link label="Water" value="water" icon={<WaterLink />} />
+						<Link label="Air" value="air" icon={<AirLink />} />
+					</>
+				)}
 			</Navigation>
-		</NavContainer>
+		</NavWrapper>
 	);
 };
 
