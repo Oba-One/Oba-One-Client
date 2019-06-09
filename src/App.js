@@ -3,6 +3,7 @@ import { hot } from 'react-hot-loader/root';
 import React, { Suspense, lazy } from 'react';
 import {
 	BrowserRouter as Router,
+	Switch,
 	Route,
 	Redirect,
 } from 'react-router-dom';
@@ -51,56 +52,41 @@ const App = () => {
 			<ApolloProvider client={client}>
 				<StylesProvider injectFirst>
 					<MaterialProvider theme={materialTheme}>
-						<StyledProvider theme={theme}>
-							<Suspense fallback={<div>Loading</div>}>
-								<Header />
-								<Notifications />
-								<AnimatedSwitch>
-									<Route
-										exact
-										path="/"
-										render={() =>
-											user.loggedIn ? (
-												<Redirect to="/home" />
-											) : (
-												<Redirect to="/landing" />
-											)
-										}
-									/>
-									<Route
-										exact
-										path="/landing"
-										render={props => <Landing {...props} />}
-									/>
-									<Route
-										exact
-										path="/home"
-										render={props => <Home {...props} />}
-									/>
-									<Route
-										exact
-										path="/air"
-										render={props => <Air {...props} />}
-									/>
-									<Route
-										exact
-										path="/earth"
-										render={props => <Earth {...props} />}
-									/>
-									<Route
-										exact
-										path="/water"
-										render={props => <Water {...props} />}
-									/>
-									<Route
-										exact
-										path="/profile"
-										render={props => <Profile {...props} />}
-									/>
-								</AnimatedSwitch>
-								<Compass />
-							</Suspense>
-						</StyledProvider>
+					<StyledProvider theme={theme}>
+						<Suspense fallback={<div>Thematic Loading</div>}>
+							<Header />
+							<Notifications />
+							<Switch>
+								<Route
+									exact
+									path="/landing"
+									render={props => <Landing {...props} />}
+								/>
+								<Route
+									exact
+									path="/home"
+									render={props => <Home {...props} />}
+								/>
+								<Route exact path="/air" render={props => <Air {...props} />} />
+								<Route
+									exact
+									path="/earth"
+									render={props => <Earth {...props} />}
+								/>
+								<Route
+									exact
+									path="/water"
+									render={props => <Water {...props} />}
+								/>
+								<Route
+									exact
+									path="/profile"
+									render={props => <Profile {...props} />}
+								/>
+							</Switch>
+							<Compass />
+						</Suspense>
+					</StyledProvider>
 					</MaterialProvider>
 				</StylesProvider>
 			</ApolloProvider>
