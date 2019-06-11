@@ -4,8 +4,8 @@ import { animated } from 'react-spring';
 
 const Wrapper = styled(animated.div)``;
 
-const Init = ({}) => {
-	return <Wrapper>Get Started</Wrapper>;
+const Init = ({ icon = () => {}, ecosytem = ''}) => {
+	return <Wrapper>Get Started {ecosytem}</Wrapper>;
 };
 
 export default Init;

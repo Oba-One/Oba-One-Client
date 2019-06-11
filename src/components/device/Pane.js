@@ -14,10 +14,11 @@ const Wrapper = styled.div`
     will-change: opacity transform;
 `;
 
-const Pane = ({ ecosystem = {} }) => {
+const Pane = ({ ecosystem = {}, background, animateOpacity, transitionState }) => {
 
     const device = useContext(DeviceContext)
 	return <Wrapper
+        device={device}
         background={background}
         animateOpacity={animateOpacity}
         transitionState={transitionState}
