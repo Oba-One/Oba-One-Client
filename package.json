@@ -10,7 +10,7 @@
 		"debug": "node --inspect --inspect-brk ./node_modules/webpack/bin/webpack.js --env.mode production",
 		"dev": "webpack-dev-server --color --info=false --env.mode development",
 		"prod": "webpack --env.mode production",
-		"prod:analyze": "npm run prod -- --env.presets analyze",
+		"prod:analyze": "npm run dev -- --env.presets analyze",
 		"prod:worker": "npm run prod -- --env.presets worker",
 		"prod:preproduction": "npm run prod -- --env.presets worker --env.presets analyze"
 	},
@@ -78,6 +78,7 @@
 		"react-svg-loader": "^3.0.1",
 		"sass-loader": "^7.1.0",
 		"sharp": "^0.22.1",
+		"speed-measure-webpack-plugin": "^1.3.1",
 		"style-loader": "^0.23.1",
 		"terser-webpack-plugin": "^1.2.4",
 		"url-loader": "^1.1.2",
