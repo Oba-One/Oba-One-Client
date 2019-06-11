@@ -20,14 +20,15 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
 				rules: [
 					{
 						test: /\.(js|jsx)$/,
-						exclude: /node_modules/,
+						exclude: [/node_modules/],
+						include: path.resolve(__dirname, 'src'),
 						loader: 'babel-loader',
 					},
 					{
 						test: /\.svg$/,
 						use: [
 							{
-								loader: 'babel-loader',
+								loader: 'babel-loader?cacheDirectory=true',
 							},
 							{
 								loader: 'react-svg-loader',
@@ -39,6 +40,7 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
 					},
 					{
 						test: /\.(png|jpe?g|gif)$/,
+						exclude: /node_modules/,
 						loader: 'file-loader',
 					},
 					{
