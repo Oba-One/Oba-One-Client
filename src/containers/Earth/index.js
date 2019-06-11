@@ -2,7 +2,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Container, Grid, DevicePane } from '../../components/global';
+import DeviceProvider from '../../providers/device';
+import EcosystemProvider from '../../providers/ecosystem';
+
+
+import { Container, Grid, } from '../../components/global';
+import DevicePane from '../../components/device';
 
 const EarthGrid = styled(Grid)``;
 
@@ -10,7 +15,7 @@ const Earth = () => {
 	return (
 		<Container>
 			<EarthGrid>
-				<DevicePane />
+				<DevicePane/>
 			</EarthGrid>
 		</Container>
 	);

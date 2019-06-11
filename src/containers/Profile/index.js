@@ -2,6 +2,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import UserProvider from '../../providers/user';
+import DeviceProvider from '../../providers/device';
+
 import { Container, Grid } from '../../components/global';
 
 import Avatar from '../../components/global/Avatar';

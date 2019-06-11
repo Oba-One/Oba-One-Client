@@ -2,17 +2,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Container, Grid, DevicePane } from '../../components/global';
+import DeviceProvider from '../../providers/device';
+import EcosystemProvider from '../../providers/ecosystem';
+
+import { Container } from '../../components/global';
+import DevicePane from '../../components/device';
 
 const WaterGrid = styled(Grid)``;
 
 const Water = () => {
 	return (
-		<Container>
-			<WaterGrid>
-				<DevicePane />
-			</WaterGrid>
-		</Container>
+		<EcosystemProvider>
+			<DeviceProvider>
+				<Container>
+					<DevicePane />
+				</Container>
+			</DeviceProvider>
+		</EcosystemProvider>
 	);
 };
 

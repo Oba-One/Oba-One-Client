@@ -2,6 +2,9 @@
 import React, { lazy, Suspense } from 'react';
 import styled from 'styled-components';
 
+import EcosystemProvider from '../../providers/ecosystem';
+
+
 import { Container, Grid } from '../../components/global';
 
 // LAZY LOADED COMPONENTS
