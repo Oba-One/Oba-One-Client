@@ -4,10 +4,20 @@ import { withRouter } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import AirLink from './Air';
-import WaterLink from './Water';
-import EarthLink from './Earth';
-import HomeLink from './Home';
+
+// PROVIDERS
+import UserProvider from '../../providers/user';
+import DeviceProvider from '../../providers/device';
+
+// GLOBAL & DEVICE NAVIGATION
+import { AirLink, WaterLink, EarthLink, HomeLink } from './Global';
+import {
+	DeviceLink,
+	DashboardLink,
+	StreamLink,
+	RemoteLink,
+	SettingsLink,
+} from './Device';
 
 const NavWrapper = styled(Card)`
 	position: fixed;
@@ -47,25 +57,38 @@ const Compass = ({ location }) => {
 	}
 
 	return (
-		<NavWrapper>
-			<Navigation value={page} onChange={handleChange}>
-				{nav === 'device' ? (
-					<>
-						<Link label="Dashboard" value="dashboard" icon={<HomeLink />} />
-						<Link label="Stream" value="stream" icon={<EarthLink />} />
-						<Link label="Remote" value="remote" icon={<WaterLink />} />
-						<Link label="Settings" value="settings" icon={<AirLink />} />
-					</>
-				) : (
-					<>
-						<Link label="Home" value="home" icon={<HomeLink />} />
-						<Link label="Earth" value="earth" icon={<EarthLink />} />
-						<Link label="Water" value="water" icon={<WaterLink />} />
-						<Link label="Air" value="air" icon={<AirLink />} />
-					</>
-				)}
-			</Navigation>
-		</NavWrapper>
+		<UserProvider>
+			<DeviceProvider>
+				<NavWrapper>
+					<Navigation value={page} onChange={handleChange}>
+						{nav === 'device' ? (
+							<>
+								<Link
+									label="Dashboard"
+									value="dashboard"
+									icon={<DashboardLink />}
+								/>
+								<Link label="Stream" value="stream" icon={<StreamLink />} />
+								<Link label="Settings" value="settings" icon={<DeviceLink />} />
+								<Link label="Remote" value="remote" icon={<RemoteLink />} />
+								<Link
+									label="Settings"
+									value="settings"
+									icon={<SettingsLink />}
+								/>
+							</>
+						) : (
+							<>
+								<Link label="Home" value="home" icon={<HomeLink />} />
+								<Link label="Earth" value="earth" icon={<EarthLink />} />
+								<Link label="Water" value="water" icon={<WaterLink />} />
+								<Link label="Air" value="air" icon={<AirLink />} />
+							</>
+						)}
+					</Navigation>
+				</NavWrapper>
+			</DeviceProvider>
+		</UserProvider>
 	);
 };
 
