@@ -2,8 +2,7 @@
 import React, { lazy, Suspense } from 'react';
 import styled from 'styled-components';
 
-import EcosystemProvider from '../../providers/ecosystem';
-
+import UserProvider from '../../providers/user';
 
 import { Container, Grid } from '../../components/global';
 
@@ -38,15 +37,17 @@ const HomeGrid = styled(Grid)`
 
 const Home = () => {
 	return (
-		<Suspense fallback={<div>loading section...</div>}>
-			<Container>
-				<HomeGrid>
-					<Activity />
-					<Youtube />
-					<Spotify />
-				</HomeGrid>
-			</Container>
-		</Suspense>
+		<UserProvider>
+			<Suspense fallback={<div>loading section...</div>}>
+				<Container>
+					<HomeGrid>
+						<Activity />
+						<Youtube />
+						<Spotify />
+					</HomeGrid>
+				</Container>
+			</Suspense>
+		</UserProvider>
 	);
 };
 

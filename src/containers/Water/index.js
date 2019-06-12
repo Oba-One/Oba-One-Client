@@ -8,7 +8,6 @@ import EcosystemProvider from '../../providers/ecosystem';
 import { Container } from '../../components/global';
 import DevicePane from '../../components/device';
 
-const WaterGrid = styled(Grid)``;
 
 const Water = () => {
 	return (

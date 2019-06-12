@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import UserProvider from '../../providers/user';
-import DeviceProvider from '../../providers/device';
 
 import { Container, Grid } from '../../components/global';
 
@@ -15,13 +14,15 @@ const ProfileGrid = styled(Grid)``;
 
 const Profile = () => {
 	return (
-		<Container>
-			<ProfileGrid>
-				<div>Setting Navigation</div>
-				<div>Avatar</div>
-				<div>Settings</div>
-			</ProfileGrid>
-		</Container>
+		<UserProvider>
+			<Container>
+				<ProfileGrid>
+					<div>Setting Navigation</div>
+					<div>Avatar</div>
+					<div>Settings</div>
+				</ProfileGrid>
+			</Container>
+		</UserProvider>
 	);
 };
 
