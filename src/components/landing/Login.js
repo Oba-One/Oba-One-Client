@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { Card } from '@material-ui/core';
 import { useTransition, animated } from 'react-spring';
+import UserContext from '../../providers/user';
 
-import Github from './Github';
-import Google from './Google';
+import { Github, Google } from './Buttons';
 
 const Comet = styled(animated.div)`
 	position: absolute;
@@ -13,7 +13,7 @@ const Comet = styled(animated.div)`
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 300px;
-	height: 150px;
+	height: 160px;
 	background: inherit;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 	mix-blend-mode: screen;
@@ -37,6 +37,9 @@ const StyledCard = styled(Card)`
 `;
 
 const Login = ({}) => {
+
+	const user = useContext(UserContext);
+
 	return (
 		<Comet>
 			<StyledCard>
