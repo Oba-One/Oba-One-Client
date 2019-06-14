@@ -11,6 +11,11 @@ const Youtube = lazy(() => import('../../components/home/Youtube'));
 const Spotify = lazy(() => import('../../components/home/Spotify'));
 const Activity = lazy(() => import('../../components/home/Activity'));
 
+const HomeContainer = styled(Container)`
+	height: 100vh;
+	overflow: visible;
+`
+
 const HomeGrid = styled(Grid)`
 	padding-top: 60px;
 	padding-bottom: 120px;
@@ -23,7 +28,8 @@ const HomeGrid = styled(Grid)`
 		grid-template-areas:
 			'feed feed feed feed'
 			'activity activity activity activity'
-			'utube utube spotify spotify';
+			'utube utube utube utube'
+			'spotify spotify spotify spotify';
 	}
 	@media (max-width: 480px) {
 		grid-template-areas:
@@ -39,13 +45,13 @@ const Home = () => {
 	return (
 		<UserProvider>
 			<Suspense fallback={<div>loading section...</div>}>
-				<Container>
+				<HomeContainer>
 					<HomeGrid>
 						<Activity />
 						<Youtube />
 						<Spotify />
 					</HomeGrid>
-				</Container>
+				</HomeContainer>
 			</Suspense>
 		</UserProvider>
 	);
