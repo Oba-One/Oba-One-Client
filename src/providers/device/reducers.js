@@ -35,11 +35,11 @@ const deviceReducer = (device, action) => {
 			return getDevices(action.user.uuid);
 		case CONNECT_DEVICE:
 			break;
+		case DISCONNECT_DEVICE:
+			break;
 		case ADD_DEVICE:
 			break;
 		case UPDATE_DEVICE:
-			break;
-		case DISCONNECT_DEVICE:
 			break;
 		case DELETE_DEVICE:
 			break;
