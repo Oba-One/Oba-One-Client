@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState} from 'react';
 import styled from 'styled-components';
+import Login from './ApiLogin';
 
 const Wrapper = styled.div`
 	grid-area: spotify;
-	height: 300px;
+	height: 420px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +12,14 @@ const Wrapper = styled.div`
 `;
 
 const Spotify = ({}) => {
-	return <Wrapper>Spotify</Wrapper>;
+	const [loggedIn,  setLoggedIn] = useState(false);
+	return <Wrapper>
+        { loggedIn ? (
+            <div> API</div>
+        ): (
+            <Login api="spotify" />
+        )}
+    </Wrapper>;
 };
 
 export default Spotify;
