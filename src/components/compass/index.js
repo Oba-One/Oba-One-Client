@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { withRouter } from 'react-router-dom';
-import Card from '@material-ui/core/Card';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import { animated, useSpring } from 'react-spring';
+import { Location, navigate } from '@reach/router';
+import { BottomNavigation, BottomNavigationAction, Card} from '@material-ui/core';
+import {
+	FireIcon,
+	EarthIcon,
+	WavesIcon,
+	HomeIcon,
+	FiveGIcon,
+	CannabisIcon,
+	RocketIcon,
+	WifiIcon,
+} from '../../assets/svgs';
 
 // PROVIDERS
 import UserProvider from '../../providers/user';
 import DeviceProvider from '../../providers/device';
 
-// GLOBAL & DEVICE NAVIGATION
-import { AirLink, WaterLink, EarthLink, HomeLink } from './Global';
-import {
-	DeviceLink,
-	DashboardLink,
-	StreamLink,
-	RemoteLink,
-	SettingsLink,
-} from './Device';
-
-const NavWrapper = styled(Card)`
+const AnimatedWrapper = styled(animated(Card))`
 	position: fixed;
+	z-index: 1007;
 	left: 50%;
 	bottom: 0;
 	transform: translate(-50%, -30px);
@@ -39,57 +39,89 @@ const Navigation = styled(BottomNavigation)`
 	display: flex;
 	justify-content: center;
 	width: 100%;
+	height: 100% !important;
+`;
+
+const Link = styled(BottomNavigationAction)`
 	height: 100%;
 `;
 
-const Link = styled(BottomNavigationAction)``;
-
-const Compass = ({ location }) => {
+const Compass = () => {
 	const [nav, setNav] = useState('global');
 	const [page, setPage] = useState('home');
-	const handleChange = newPage => {
-		setPage(newPage);
-	};
 
-	const isLanding = location.pathname === '/landing';
-	if (isLanding) {
-		return null;
-	}
+	const handleChange = (event, newPage) => {
+		setPage(newPage);
+		navigate(`/${newPage}`);
+	};
 
 	return (
 		<UserProvider>
 			<DeviceProvider>
-				<NavWrapper>
-					<Navigation value={page} onChange={handleChange}>
-						{nav === 'device' ? (
-							<>
-								<Link
-									label="Dashboard"
-									value="dashboard"
-									icon={<DashboardLink />}
-								/>
-								<Link label="Stream" value="stream" icon={<StreamLink />} />
-								<Link label="Settings" value="settings" icon={<DeviceLink />} />
-								<Link label="Remote" value="remote" icon={<RemoteLink />} />
-								<Link
-									label="Settings"
-									value="settings"
-									icon={<SettingsLink />}
-								/>
-							</>
-						) : (
-							<>
-								<Link label="Home" value="home" icon={<HomeLink />} />
-								<Link label="Earth" value="earth" icon={<EarthLink />} />
-								<Link label="Water" value="water" icon={<WaterLink />} />
-								<Link label="Air" value="air" icon={<AirLink />} />
-							</>
-						)}
-					</Navigation>
-				</NavWrapper>
+				<Location>
+					{({ location }) => {
+						const isLanding = location.pathname === '/landing';
+						const isProfile = location.pathname === '/profile'
+						const isDevices = location.pathname === '/devices'
+						if (isLanding || isProfile || isDevices) {
+							return null;
+						}
+						return (
+							<AnimatedWrapper>
+								{nav === 'device' ? (
+									<Navigation value={page} onChange={handleChange}>
+										<Link
+											label="Dashboard"
+											value="dashboard"
+											icon={<RocketIcon />}
+										/>
+										<Link
+											label="Stream"
+											value="stream"
+											icon={<WifiIcon />}
+										/>
+										<Link
+											label="Settings"
+											value="settings"
+											icon={<FiveGIcon/>}
+										/>
+										<Link
+											label="Remote"
+											value="remote"
+											icon={<CannabisIcon />}
+										/>
+									</Navigation>
+								) : (
+									<Navigation value={page} onChange={handleChange}>
+										<Link
+											value="home"
+											label="Home"
+											icon={<HomeIcon />}
+										/>
+										<Link
+											value="air"
+											label="Air"
+											icon={<FireIcon />}
+										/>
+										<Link
+											value="earth"
+											label="Earth"
+											icon={<EarthIcon />}
+										/>
+										<Link
+											value="water"
+											label="Water"
+											icon={<WavesIcon />}
+										/>
+									</Navigation>
+								)}
+							</AnimatedWrapper>
+						);
+					}}
+				</Location>
 			</DeviceProvider>
 		</UserProvider>
 	);
 };
 
-export default withRouter(Compass);
+export default Compass;
