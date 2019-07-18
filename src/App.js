@@ -1,45 +1,37 @@
 // REACT IMPORTS
 import { hot } from 'react-hot-loader/root';
 import React, { Suspense, lazy } from 'react';
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Redirect,
-} from 'react-router-dom';
+import { Redirect } from '@reach/router';
 
 // APOLLO IMPORTS
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 // STYLES IMPORTS
-import {
-	StylesProvider,
-	ThemeProvider as MaterialProvider,
-} from '@material-ui/styles';
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
-import { ThemeProvider as StyledProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import theme from './theme';
-const materialTheme = responsiveFontSizes(createMuiTheme());
 
 // PAGE ANIMATIONS
-import AnimatedSwitch from './components/animations/global/AnimatedSwitch';
+import AnimatedRouter from './components/animations/AnimatedSwitch';
+import { RouteLoader} from './components/animations/Loaders';
 
 // GLOBAL UI COMPONENTS
 import Header from './components/header';
 import Notifications from './components/notifications';
 import Compass from './components/compass';
+import FloatingMenu from './components/menu';
 
 // LAZY LOADED ROUTES
 const Landing = lazy(() => import('./containers/Landing'));
 const Home = lazy(() => import('./containers/Home'));
-const Profile = lazy(() => import('./containers/Profile'));
 const Air = lazy(() => import('./containers/Air'));
 const Earth = lazy(() => import('./containers/Earth'));
 const Water = lazy(() => import('./containers/Water'));
+const Profile = lazy(() => import('./containers/Profile'));
+const Devices = lazy(() => import('./containers/Devices'));
 
 const client = new ApolloClient({
-	uri: '',
+	uri: 'http://localhost:3000/graphql',
 });
 
 const user = {
@@ -48,49 +40,28 @@ const user = {
 
 const App = () => {
 	return (
-		<Router>
-			<ApolloProvider client={client}>
-				<StylesProvider injectFirst>
-					<MaterialProvider theme={materialTheme}>
-					<StyledProvider theme={theme}>
-						<Suspense fallback={<div>Thematic Loading</div>}>
-							<Header />
-							<Notifications />
-							<Switch>
-								<Route
-									exact
-									path="/landing"
-									render={props => <Landing {...props} />}
-								/>
-								<Route
-									exact
-									path="/home"
-									render={props => <Home {...props} />}
-								/>
-								<Route exact path="/air" render={props => <Air {...props} />} />
-								<Route
-									exact
-									path="/earth"
-									render={props => <Earth {...props} />}
-								/>
-								<Route
-									exact
-									path="/water"
-									render={props => <Water {...props} />}
-								/>
-								<Route
-									exact
-									path="/profile"
-									render={props => <Profile {...props} />}
-								/>
-							</Switch>
-							<Compass />
-						</Suspense>
-					</StyledProvider>
-					</MaterialProvider>
-				</StylesProvider>
-			</ApolloProvider>
-		</Router>
+		<ApolloProvider client={client}>
+			<ThemeProvider theme={theme}>
+				<>
+					{!user.loggedIn && <Redirect to="/landing" />}
+					<Header />
+					<Notifications />
+					<Suspense fallback={<RouteLoader/>}>
+						<AnimatedRouter>
+							<Landing path="/landing" />
+							<Home path="/home" />
+							<Air path="/air" />
+							<Earth path="/earth" />
+							<Water path="/water" />
+							<Profile path="/profile/:section" />
+							<Devices path="/devices" />
+						</AnimatedRouter>
+					</Suspense>
+					<FloatingMenu />
+					<Compass />
+				</>
+			</ThemeProvider>
+		</ApolloProvider>
 	);
 };
 
