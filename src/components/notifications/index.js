@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
+import { useObservable } from 'rxjs-hooks';
+
+import Notification from './Notification';
+import { Subject } from 'rxjs';
+import { filter, debounceTime} from 'rxjs/operators';
 
 const Article = styled.article`
 	position: absolute;
@@ -18,13 +22,25 @@ const Article = styled.article`
 `;
 
 const Notifications = ({ location }) => {
-	const [notifications, setNotifications] = useState([]);
-	const isLanding = location.pathname === '/landing';
 
-	if (isLanding || !notifications.length) {
+	const [notifications, setNotifications] = useState([]);
+
+
+	useEffect(
+		() => {
+			// Subscribe to Notification Observable
+			return () => {
+				// Unsubscribe from Notification Observable
+			};
+		},
+		// Only update if notifications update
+		[],
+	);
+
+	if ( !notifications.length) {
 		return null;
 	}
 	return <Article>Stream of Notifications Here {value}</Article>;
 };
 
-export default withRouter(Notifications);
+export default Notifications;
