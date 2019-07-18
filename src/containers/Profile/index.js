@@ -1,27 +1,48 @@
 // REACT IMPORTS
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import styled from 'styled-components';
+import { Router } from '@reach/router';
 
 import UserProvider from '../../providers/user';
 
-import { Container, Grid } from '../../components/global';
+import { Container } from '../../components/global';
 
-import Avatar from '../../components/global/Avatar';
-import Navigation from '../../components/profile/Navigation';
-import Settings from '../../components/profile/Settings';
+const Sidebar = lazy(() => import('../../components/profile/Sidebar'));
 
-const ProfileGrid = styled(Grid)``;
+const Main = styled.div`
+	width: 75%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	padding-top: 7%;
+	border: 2px dotted beige;
+	overflow: visible;
+`;
+
+const StyledContainer = styled(Container)`
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100vh;
+	border: 3px solid red;
+	margin-top: 60px;
+`;
 
 const Profile = () => {
 	return (
 		<UserProvider>
-			<Container>
-				<ProfileGrid>
-					<div>Setting Navigation</div>
-					<div>Avatar</div>
-					<div>Settings</div>
-				</ProfileGrid>
-			</Container>
+			<StyledContainer>
+				<Suspense fallback={<div>loading...</div>}>
+					<Sidebar />
+					<Main>
+						<Router>
+							<div path="/user">Profile</div>
+
+							<div path="/profile/account">Account</div>
+						</Router>
+					</Main>
+				</Suspense>
+			</StyledContainer>
 		</UserProvider>
 	);
 };
