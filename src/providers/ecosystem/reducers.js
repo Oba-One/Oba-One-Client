@@ -1,8 +1,8 @@
-const GET_ECOSYSTEMS = 'GET_ECOSYSTEMS';
+const GET_ECOSYSTEM = 'GET_ECOSYSTEM';
 const SET_ECOSYSTEM = 'SET_ECOSYSTEM';
 const UPDATE_ECOSYSTEM = 'UPDATE_ECOSYSTEM';
 
-const getEcosytems = () => {
+const getEcosytem = () => {
 	// Send Query & Update Ecosystem Context
 };
 
@@ -16,7 +16,7 @@ const setEcosystem = () => {
 
 const ecosystemReducer = (ecosystem, action) => {
 	switch (action.type) {
-		case GET_ECOSYSTEMS:
+		case GET_ECOSYSTEM:
 			break;
 		case SET_ECOSYSTEM:
 			break;
@@ -27,4 +27,4 @@ const ecosystemReducer = (ecosystem, action) => {
 	}
 };
 
-export { ecosystemReducer, GET_ECOSYSTEMS, SET_ECOSYSTEM, UPDATE_ECOSYSTEM };
+export { ecosystemReducer, GET_ECOSYSTEM, SET_ECOSYSTEM, UPDATE_ECOSYSTEM };
