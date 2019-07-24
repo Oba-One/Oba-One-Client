@@ -5,46 +5,70 @@ const ADD_DEVICE = 'ADD_DEVICE';
 const UPDATE_DEVICE = 'UPDATE_DEVICE';
 const DELETE_DEVICE = 'DELETE_DEVICE';
 
-const getDevices = async () => {
+const getDevices = async (state = {}, id = ``) => {
 	// Send Query & Update Device Context
+	console.log(state);
+	console.log(id);
+
+
+	return state;
 };
 
-const connectDevice = () => {
+const connectDevice = (state = {}, device  = {}) => {
 	// Subscribe to Observable & Set Device Context
+	console.log(state);
+	console.log(device);
+
+	return state;
 };
 
-const disconnectDevice = () => {
+const disconnectDevice = (state = {}) => {
 	// Unsubscribe to Observable & Set Device Context
+	console.log(state);
+
+	return state;
 };
 
-const addDevice = async () => {
+const addDevice = async (state = {}, device = {}) => {
 	// Send Mutation & Update Device Context
+	console.log(state);
+	console.log(device);
+
+	return state;
 };
 
-const updateDevice = async () => {
+const updateDevice = async (state = {}, device = {}) => {
 	// Send Mutation & Update Device Context
+	console.log(state);
+	console.log(device);
+
+	return state;
 };
 
-const deleteDevice = async () => {
+const deleteDevice = async (state, deviceID) => {
 	// Send Mutation & Update Device Context
+	console.log(state);
+	console.log(deviceID);
+
+	return state;
 };
 
-const deviceReducer = (device, action) => {
+const deviceReducer = (state, action) => {
 	switch (action.type) {
 		case GET_DEVICES:
-			return getDevices(action.user.uuid);
+			return getDevices(state, action.id);
 		case CONNECT_DEVICE:
-			break;
+			return connectDevice(state, action.device);
 		case DISCONNECT_DEVICE:
-			break;
+			return disconnectDevice(state);
 		case ADD_DEVICE:
-			break;
+			return addDevice(state, action.device);
 		case UPDATE_DEVICE:
-			break;
+			return updateDevice(state, action.device);
 		case DELETE_DEVICE:
-			break;
+			return deleteDevice(state, action.deviceID);
 		default:
-			return device;
+			return state;
 	}
 };
 

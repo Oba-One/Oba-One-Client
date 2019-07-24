@@ -1,46 +1,70 @@
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import {
+	GET_USER_QUERY,
+	LOG_IN_MUTATION,
+	LOG_OUT_MUTATION,
+	UPDATE_USER_MUTATION,
+	DELETE_USER_MUTATION,
+} from './queries';
+
 const GET_USER = 'GET_USER';
 const LOG_IN = 'LOG_IN';
 const LOG_OUT = 'LOG_OUT';
 const UPDATE_USER = 'UPDATE_USER';
 const DELETE_USER = 'DELETE_USER';
 
-const getUser = () => {};
+const getUser = (state = {}, id = ``) => {
+	// Send Query & Update User Context
+	console.log(state);
+	console.log(id);
 
-const logIn = provider => {
-	// Firebase Auth for Google and Github
-	if (provider === 'google') {
-		// Google Auth Flow
-	} else if (provider === 'github') {
-	} else {
-		return;
-	}
+	return state;
 };
 
-const logOut = token => {
-	console.log(token);
-	// Firebase Log Out Callback here
+const logIn = (state = {}, provider = ``) => {
+	// Send Mutation & Update User Context
+	console.log(state);
+	console.log(provider);
+
+	return state;
 };
 
-const updateUser = () => {
-    // Send Mutation & Update User Context
+const logOut = (state = {}, user = {}) => {
+	// Send Mutation & Update User Context
+	console.log(user);
+	console.log(state);
+
+	return state;
 };
 
-const deleteUser = () => {
-    // Send Mutation & Update User Context
+const updateUser = (state = {}, user = {}) => {
+	// Send Mutation & Update User Context
+	console.log(user);
+	console.log(state);
+
+	return state;
+};
+
+const deleteUser = (state = {}, id = ``) => {
+	// Send Mutation & Update User Context
+	console.log(state);
+	console.log(id);
+
+	return state;
 };
 
 const userReducer = (state, action) => {
 	switch (action.type) {
 		case GET_USER:
-			break;
+			return getUser(state, action.id);
 		case LOG_IN:
-			break;
+			return logIn(state, action.provider);
 		case UPDATE_USER:
-			break;
+			return updateUser(state, action.user);
 		case LOG_OUT:
-			break;
+			return logOut(state, action.user);
 		case DELETE_USER:
-			break;
+			return deleteUser(state, action.id);
 		default:
 			return state;
 	}

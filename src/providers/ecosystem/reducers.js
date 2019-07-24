@@ -1,30 +1,34 @@
-const GET_ECOSYSTEMS = 'GET_ECOSYSTEMS';
+const GET_ECOSYSTEM = 'GET_ECOSYSTEM';
 const SET_ECOSYSTEM = 'SET_ECOSYSTEM';
 const UPDATE_ECOSYSTEM = 'UPDATE_ECOSYSTEM';
 
-const getEcosytems = () => {
+const getEcosytem = state => {
 	// Send Query & Update Ecosystem Context
+	console.log(state);
 };
 
-const updateEcosytem = () => {
+const updateEcosytem = (state, ecosystem) => {
 	// Send Mutation & Update Ecosystem Context
+	console.log(state);
+	console.log(ecosystem);
 };
 
-const setEcosystem = () => {
+const setEcosystem = state => {
 	// Update Ecosystem Context
+	console.log(state);
 };
 
-const ecosystemReducer = (ecosystem, action) => {
+const ecosystemReducer = (state, action) => {
 	switch (action.type) {
-		case GET_ECOSYSTEMS:
-			break;
+		case GET_ECOSYSTEM:
+			return getEcosytem(state);
 		case SET_ECOSYSTEM:
-			break;
+			return setEcosystem(state);
 		case UPDATE_ECOSYTEM:
-			break;
+			return updateEcosytem(state, action.ecosystem);
 		default:
-			return ecosystem;
+			return state;
 	}
 };
 
-export { ecosystemReducer, GET_ECOSYSTEMS, SET_ECOSYSTEM, UPDATE_ECOSYSTEM };
+export { ecosystemReducer, GET_ECOSYSTEM, SET_ECOSYSTEM, UPDATE_ECOSYSTEM };
