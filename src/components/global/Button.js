@@ -6,8 +6,9 @@ const StyledButton = styled(MaterialButton)`
 
 `;
 
-const Button = ({ children }) => (
-    <StyledButton>
+const Button = ({ children, className}) => (
+    <StyledButton
+        className={className}>
         {children}
     </StyledButton>
 )
