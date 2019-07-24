@@ -1,46 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
-import { animated} from 'react-spring';
 
-
-const Section = styled(animated.section)`
+const Section = styled.section`
 	position: relative;
 	margin: 0 auto;
+	min-height: 100vh;
 	width: 100%;
-	max-width: ${({ theme, fullWidth }) => fullWidth ? '100vw' : theme.breakpoint.desktop};
-	padding-top: ${({ paddingtop }) => paddingtop};
-	padding-bottom: ${({ paddingbottom }) => paddingbottom};
+	max-width: ${({ theme }) => theme.breakpoint.desktop};
+	padding-top: ${({ paddingTop }) => paddingTop};
+	padding-bottom: ${({ paddingBottom }) => paddingBottom};
 	@media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
-		padding-left: ${({ desktoppadding }) => desktoppadding};
-		padding-right: ${({ desktoppadding }) => desktoppadding};
+		padding-left: ${({ desktopPadding }) => desktopPadding};
+		padding-right: ${({ desktopPadding }) => desktopPadding};
 	}
 	@media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
-		padding-left: ${({ tabletpadding }) => tabletpadding};
-		padding-right: ${({ tabletpadding }) => tabletpadding};
+		padding-left: ${({ tabletPadding }) => tabletPadding};
+		padding-right: ${({ tabletPadding }) => tabletPadding};
 	}
 	@media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
-		padding-left: ${({ mobilepadding }) => mobilepadding};
-		padding-right: ${({ mobilepadding }) => mobilepadding};
+		padding-left: ${({ mobilePadding }) => mobilePadding};
+		padding-right: ${({ mobilePadding }) => mobilePadding};
 	}
 `;
 
 const Container = ({
-	mobilepadding = '0',
-	tabletpadding = '0',
-	desktoppadding = '32px',
-	paddingtop = '0',
-	paddingbottom = '0',
-	fullWidth = false,
+	mobilePadding = '0',
+	tabletPadding = '0',
+	desktopPadding = '32px',
+	paddingTop = '0',
+	paddingBottom = '0',
 	className,
 	children,
 }) => (
 	<Section
-		mobilepadding={mobilepadding}
-		tabletpadding={tabletpadding}
-		desktoppadding={desktoppadding}
-		paddingtop={paddingtop}
-		paddingbottom={paddingbottom}
-		fullWidth={fullWidth}
+		mobilePadding={mobilePadding}
+		tabletPadding={tabletPadding}
+		desktopPadding={desktopPadding}
+		paddingTop={paddingTop}
+		paddingBottom={paddingBottom}
 		className={className}
 	>
 		{children}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Location } from '@reach/router';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 
@@ -18,8 +18,8 @@ const Nav = styled(animated.nav)`
 	will-change: opacity transform;
 `;
 
-const Navigation = ({}) => {
-	return <Location>{({ location }) => <Nav> ProfileNavigation</Nav>}</Location>;
+const Navigation = ({ location }) => {
+	return <Nav> ProfileNavigation</Nav>;
 };
 
-export default Navigation;
+export default withRouter(Navigation);

@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
+import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 
-const StyledDial = styled(SpeedDial)`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 120px;
-`;
-
-const Dial = ({ children, className = {} }) => {
+const Dial = ({ actions = [{ name: '', icon: () => {} }], className = {} }) => {
 	const [open, setOpen] = useState(false);
-
 	return (
-		<StyledDial
+		<SpeedDial
 			ariaLabel="SpeedDial example"
 			className={className}
 			icon={<SpeedDialIcon />}
@@ -27,13 +19,16 @@ const Dial = ({ children, className = {} }) => {
 			onMouseLeave={() => setOpen(false)}
 			open={open}
 		>
-			{children}
-		</StyledDial>
+			{actions.map(action => (
+				<SpeedDialAction
+					key={action.name}
+					icon={action.icon}
+					tooltipTitle={action.name}
+					onClick={() => setOpen(!open)}
+				/>
+			))}
+		</SpeedDial>
 	);
-};
-
-Dial.propTypes = {
-	className: PropTypes.object,
 };
 
 export default Dial;

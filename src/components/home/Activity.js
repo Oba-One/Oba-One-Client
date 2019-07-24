@@ -1,10 +1,9 @@
-import React, { useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Login from './ApiLogin';
 
 const Wrapper = styled.div`
 	grid-area: activity;
-	height: 620px;
+	height: 360px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,14 +11,7 @@ const Wrapper = styled.div`
 `;
 
 const Activity = ({}) => {
-    const [loggedIn,  setLoggedIn] = useState(false);
-	return <Wrapper>
-        { loggedIn ? (
-            <div> API</div>
-        ): (
-            Activity
-        )}
-    </Wrapper>;
+	return <Wrapper>Activity</Wrapper>;
 };
 
 export default Activity;

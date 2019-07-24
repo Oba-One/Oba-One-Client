@@ -1,50 +1,22 @@
 import React, { Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { IconButton, Dialog, CircularProgress } from '@material-ui/core';
 import { Wrapper } from '../global';
 
-const StyledWrapper = styled(Wrapper)`
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-`;
+const styleIcon = Icon => {
+	const StyledIcon = styled(Icon)``;
 
-const Api = styled.h3`
-	font-size: 24px;
-	text-transform: capitalize;
-`;
+	return StyledIcon;
+};
 
-const Icon = styled(IconButton)`
-	display: flex !important;
-	flex-direction: column !important;
-	height: 100px;
-	width: 100px;
-`;
-
-const Login = ({
-	onClick = () => {},
-	isLoading = false,
-	icon = `ICON`,
-	api = ``,
-}) => {
+const Login = ({ onClick = () => {}, Icon = () => {}, Modal = () => {}  }) => {
+    const StyledIcon = styleIcon(Icon);
+    const LazyModal = lazy(() => import(Modal))
 	return (
-		<Suspense fallback={<CircularProgress />}>
-			<StyledWrapper>
-				{!isLoading ? (
-					<>
-						<Icon onClick={onClick}>
-							{icon}
-							{api && <Api>{api}</Api>}
-						</Icon>
-					</>
-				) : (
-					<CircularProgress />
-				)}
-			</StyledWrapper>
+		<Suspense fallback={<div>Comp Loading</div>}>
+			<Wrapper>
+				<StyledIcon onClick={onClick} />
+			</Wrapper>
 		</Suspense>
 	);
 };

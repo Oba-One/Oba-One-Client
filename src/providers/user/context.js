@@ -7,6 +7,7 @@ const UserContext = createContext({
 	token: ``,
 	loggedIn: null,
 	settings: {},
+	devices: [],
 });
 
 export const UserProvider = UserContext.Provider

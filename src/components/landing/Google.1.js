@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
@@ -10,7 +11,7 @@ firebase.initializeApp(firebaseConfig);
 const Container = styled.div``;
 const Success = styled.div``;
 
-const Login = () => {
+const Login = ({ history }) => {
 	const [authSuccess, setAuthSuccess] = useState(null);
 	const [provider, setProvider] = useState(null);
 	const user = useContext(UserContext);
@@ -32,4 +33,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default withRouter(Login);

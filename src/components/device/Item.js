@@ -42,7 +42,7 @@ const DeviceItem = ({
 	lastUse = '',
 }) => {
 	return (
-		<StyledItem button onClick={() => {}}>
+		<StyledItem button key={device} onClick={() => {}}>
 			<Thumbnail src={thumbnail} />
 			<Content>
 				<Name>{name}</Name>
@@ -75,18 +75,11 @@ const DeviceItemMini = ({
 	);
 };
 
-DeviceItem.propTypes = {
+DeviceItemMini.propTypes = {
 	thumbnail: PropTypes.string,
 	name: PropTypes.string,
 	description: PropTypes.string,
 	info: PropTypes.object,
-	status: PropTypes.string,
-	lastUse: PropTypes.string,
-};
-
-DeviceItemMini.propTypes = {
-	thumbnail: PropTypes.string,
-	name: PropTypes.string,
 	status: PropTypes.string,
 	lastUse: PropTypes.string,
 };

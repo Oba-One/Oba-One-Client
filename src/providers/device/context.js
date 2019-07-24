@@ -3,6 +3,7 @@ import { createContext } from 'react';
 const DeviceContext = createContext({
 	activeDevice: {},
 	devices: [],
+	deviceObservable: null,
 });
 
 export const DeviceProvider = DeviceContext.Provider;

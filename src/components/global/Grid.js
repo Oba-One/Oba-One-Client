@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const GridLayout = styled.div`
+const GridLayout = styled.section`
 	display: grid;
 	overflow-x: hidden;
 	grid-template-columns: repeat(${({ lgColumns }) => lgColumns}, 1fr);
