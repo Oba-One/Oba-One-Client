@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { animated } from 'react-spring';
+import EcosystemContext from '../../providers/ecosystem/context';
+import DeviceContext from '../../providers/device/context';
+
 import { StarIcon } from '../../assets/svgs/';
 
 const Wrapper = styled(animated.div)`
@@ -14,7 +17,13 @@ const Wrapper = styled(animated.div)`
 	text-align: center;
 `;
 
-const Init = ({ icon = () => <div></div>, ecosytem = '', newUser = true }) => {
+const Init = ({ icon = () => <div />, newUser = true }) => {
+	const ecosystem = useContext(EcosystemContext);
+	const device = useContext(DeviceContext);
+
+	console.log(ecosystem.setEcosystem( ));
+
+
 	return (
 		<Wrapper>
 			{newUser ? (
@@ -30,8 +39,7 @@ const Init = ({ icon = () => <div></div>, ecosytem = '', newUser = true }) => {
 					You Know What's Up!
 				</h4>
 			)}
-			<StarIcon/>
-			{icon()}
+			<StarIcon />
 		</Wrapper>
 	);
 };
