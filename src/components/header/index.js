@@ -1,7 +1,7 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
+import { Location } from '@reach/router';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import useResizeObserver from '../../helpers/useResizeObserver';
 
@@ -23,22 +23,29 @@ const AnimatedHeader = styled(animated.header)`
 	will-change: opacity transform;
 `;
 
-const Header = ({ location }) => {
-	const isLanding = location.pathname === '/landing';
+const Header = ({}) => {
 	const isTablet = useResizeObserver() <= 920;
 
 	const animationStyle = useSpring({});
 
-	if (isLanding || isTablet) {
-		return null;
-	}
-
 	return (
-		<AnimatedHeader style={animationStyle}>
-			<Logo/>
-			<Profile>Profile</Profile>
-		</AnimatedHeader>
+		<Location>
+			{({ location }) => {
+				const isLanding = location.pathname === '/landing';
+				const isHome = location.pathname === '/home';
+
+				if (isLanding || (!isHome && isTablet)) {
+					return null;
+				}
+				return (
+					<AnimatedHeader style={animationStyle}>
+						<Logo />
+						<Profile />
+					</AnimatedHeader>
+				);
+			}}
+		</Location>
 	);
 };
 
-export default withRouter(Header);
+export default Header;
